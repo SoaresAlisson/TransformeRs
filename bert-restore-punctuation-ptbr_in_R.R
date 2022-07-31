@@ -8,6 +8,8 @@
 # Soon a vignette will be available
 
 
+modeloBert <- huggingfaceR::hf_load_model("dominguesm/bert-restore-punctuation-ptbr")
+
 reconstructBERT <- function(texto){
   
   df <- do.call(rbind.data.frame, modeloBert(texto)) |> 
@@ -39,3 +41,6 @@ reconstructBERT <- function(texto){
     dplyr::summarise(frase = paste(converted, collapse = " ")) |>
     dplyr::pull(frase)
 }
+
+# Just call it with text
+reconstructBERT("henrique foi no lago pescar com o pedro mais tarde foram para a casa do pedro fritar os peixes")
