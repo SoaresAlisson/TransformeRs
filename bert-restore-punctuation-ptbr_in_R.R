@@ -52,7 +52,7 @@ reconstructBERT <- function(texto){
 # Calling the function
 reconstructBERT("henrique foi no lago pescar com o pedro mais tarde foram para a casa do pedro fritar os peixes")
 
-# in case you have a buch of phrases
+# in case you have a bunch of phrases
 txt <- c("estou testando reconstrução de pontução feita em bert e transformers usamos aqui a linguagem r de programção", 
          "henrique foi no lago pescar com o pedro mais tarde foram para a casa do pedro fritar os peixes",
          "cinco trabalhadores da construção civil em capacetes e coletes amarelos estão ocupados no trabalho",

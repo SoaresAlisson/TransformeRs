@@ -2,7 +2,7 @@
 
 Some implementations of Transformers/Bert in R, mainly in Portuguese language.
 
-At the moment, thre is only one implementation:
+At the moment, there is only one implementation:
 
 ## 1) bert-restore-punctuation-ptbr
 
