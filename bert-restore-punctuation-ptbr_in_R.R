@@ -7,11 +7,18 @@
 #
 # Soon a vignette will be available
 
+# Preparation
+reticulate::install_miniconda(force = TRUE)
 
+# install huggingfaceR
+devtools::install_github("farach/huggingfaceR")
+
+
+# loading the model
 modeloBert <- huggingfaceR::hf_load_model("dominguesm/bert-restore-punctuation-ptbr")
 
+# load the function
 reconstructBERT <- function(texto){
-  
   df <- do.call(rbind.data.frame, modeloBert(texto)) |> 
     dplyr::select(entity, word) 
   
@@ -42,5 +49,14 @@ reconstructBERT <- function(texto){
     dplyr::pull(frase)
 }
 
-# Just call it with text
+# Calling the function
 reconstructBERT("henrique foi no lago pescar com o pedro mais tarde foram para a casa do pedro fritar os peixes")
+
+# in case you have a buch of phrases
+txt <- c("estou testando reconstrução de pontução feita em bert e transformers usamos aqui a linguagem r de programção", 
+         "henrique foi no lago pescar com o pedro mais tarde foram para a casa do pedro fritar os peixes",
+         "cinco trabalhadores da construção civil em capacetes e coletes amarelos estão ocupados no trabalho",
+         "na quinta feira em visita a belo horizonte pedro sobrevoa a cidade atingida pelas chuvas",
+         "coube ao representante de classe contar que na avaliação de língua portuguesa alguns alunos se mantiveram concentrados e outros dispersos")
+
+sapply(txt, reconstructBERT)
